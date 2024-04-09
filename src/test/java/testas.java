@@ -19,7 +19,7 @@ public class testas {
     @Test
     public void test1() {
     int count = 0;
-  //  String firstID = 0;
+
 
         for (int p = 1; p <= 5; p++) {
             _globalDriver.get("https://www.skelbiu.lt/skelbimai/" + p + "?keywords=kepure+su+snapeliu");
@@ -38,10 +38,6 @@ public class testas {
                     } catch (Exception e) {
                         continue;
                     }
-                    //if (p==1 && i==1){
-                    //    _globalDriver.findElement(By.xpath(""))
-
-                    }
                     String ID = _globalDriver.findElement(By.xpath("//*[@id=\"contentArea\"]/div[6]/div[1]/div[1]/div[4]/div[1]")).getText();
                     System.out.println(ID);
                     _globalDriver.get("https://www.skelbiu.lt/skelbimai/" + p + "?keywords=kepure+su+snapeliu");
@@ -49,9 +45,8 @@ public class testas {
                 }
             }
 
-        //System.out.println("Tikru skelbimu yra " + count);
+        System.out.println("Tikru skelbimu yra " + count);
         }
-
-
+    }
 
 
