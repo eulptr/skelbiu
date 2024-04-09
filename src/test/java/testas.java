@@ -14,20 +14,44 @@ public class testas {
     @BeforeTest
     public void setUp() {
         _globalDriver = new ChromeDriver();
-        _globalDriver.get("https://www.skelbiu.lt/");
     }
 
     @Test
-    public void test1(){
-        _globalDriver.findElement(By.xpath("/html/body/div[9]/div[2]/div/div[1]/div/div[2]/div/button[2]")).click();
-        _globalDriver.findElement(By.xpath("/html/body/div[3]/div/div[1]/form/div[2]/div[1]/input")).sendKeys("parduodu iphone 11");
-        try {
-            TimeUnit.SECONDS.sleep(5);// palaukiam X sec kol puslapis uzsikraus, stabdomas testas, ne narsykle
+    public void test1() {
+    int count = 0;
+  //  String firstID = 0;
 
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        for (int p = 1; p <= 5; p++) {
+            _globalDriver.get("https://www.skelbiu.lt/skelbimai/" + p + "?keywords=kepure+su+snapeliu");
+
+            if (p==1) {
+                _globalDriver.findElement(By.xpath("/html/body/div[10]/div[2]/div/div[1]/div/div[2]/div/button[2]")).click();
+            }
+                for (int i = 1; i <= 27; i++) {
+                    //html/body/div[3]/div[2]/div[2]/div[4]/div[1]/div[2]/div[2]/div[i]/a
+                    //html/body/div[3]/div[2]/div[2]/div[4]/div[1]/div[2]/div[2]/div[2]/a
+                    //html/body/div[3]/div[2]/div[2]/div[4]/div[1]/div[2]/div[3]/div[1]/a
+                    //html/body/div[3]/div[2]/div[2]/div[4]/div[1]/div[2]/div[3]/div[2]/a
+                    try {
+                        _globalDriver.findElement(By.xpath("html/body/div[3]/div[2]/div[2]/div[4]/div[1]/div[2]/div[" + (p+1) + "]/div[" + i + "]/a")).click();
+                        count++;
+                    } catch (Exception e) {
+                        continue;
+                    }
+                    //if (p==1 && i==1){
+                    //    _globalDriver.findElement(By.xpath(""))
+
+                    }
+                    String ID = _globalDriver.findElement(By.xpath("//*[@id=\"contentArea\"]/div[6]/div[1]/div[1]/div[4]/div[1]")).getText();
+                    System.out.println(ID);
+                    _globalDriver.get("https://www.skelbiu.lt/skelbimai/" + p + "?keywords=kepure+su+snapeliu");
+
+                }
+            }
+
+        //System.out.println("Tikru skelbimu yra " + count);
         }
-        _globalDriver.findElement(By.xpath("/html/body/div[3]/div/div[1]/form/div[2]/div[1]/button/i")).click();
-    }
-}
+
+
+
 
