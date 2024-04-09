@@ -61,10 +61,7 @@ public class testas {
                     _globalDriver.findElement(By.xpath("/html/body/div[10]/div[2]/div/div[1]/div/div[2]/div/button[2]")).click();
                 }
                 for (int i = 1; i <= 27; i++) {
-                    //html/body/div[3]/div[2]/div[2]/div[4]/div[1]/div[2]/div[2]/div[i]/a
-                    //html/body/div[3]/div[2]/div[2]/div[4]/div[1]/div[2]/div[2]/div[2]/a
-                    //html/body/div[3]/div[2]/div[2]/div[4]/div[1]/div[2]/div[3]/div[1]/a
-                    //html/body/div[3]/div[2]/div[2]/div[4]/div[1]/div[2]/div[3]/div[2]/a
+
                     try {
                         _globalDriver.findElement(By.xpath("html/body/div[3]/div[2]/div[2]/div[4]/div[1]/div[2]/div[" + (p+1) + "]/div[" + i + "]/a")).click();
                         count++;
@@ -77,7 +74,6 @@ public class testas {
 
                 }
             }
-
             System.out.println("Tikru skelbimu yra " + count);
         }
         }
